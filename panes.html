@@ -9,110 +9,193 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
- /* Estilos básicos para la paginación */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
+        /* Estilos básicos para la paginación */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.pagination button {
-    margin: 0 5px;
-    padding: 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
+        .pagination button {
+            margin: 0 5px;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
 
-.pagination button:hover {
-    background-color: #0056b3;
-}
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
 
-/* Estilos básicos para los productos */
-.product {
-    display: inline-block;
-    width: calc(100% / 5 - 20px);
-    margin: 10px;
-    text-align: center;
-    cursor: pointer;
-}
+        /* Estilos básicos para los productos */
+        .product {
+            display: inline-block;
+            width: calc(100% / 6 - 20px);
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 10px;
+        }
 
-.product img {
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Contenedor de productos */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        /* Estilo de selección de productos por página */
+        #items-per-page {
+            margin-top: 20px;
+            display: block;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Estilos para el logo */
+        #logoportada {
+            max-width: 200px; /* Tamaño fijo para el logo */
+            height: auto;
+        }
+
+        /* Estilos para el nav (Menú hamburguesa) */
+        nav {
+    position: sticky;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    border-radius: 5px;
+    background-color: #ffd700;
+    z-index: 1000; /* Asegúrate de que el menú esté por encima de otros elementos */
+    box-shadow: 0 4px 2px -2px gray; /* Añade una sombra para separar visualmente el menú */
 }
+        #menu {
+            display: flex;
+            justify-content: space-around;
+        }
 
-/* Contenedor de productos */
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+        #menu li {
+            list-style: none;
+        }
 
-/* Estilo de selección de productos por página */
-#items-per-page {
-    margin-top: 20px;
-    display: block;
-    width: 150px;
-    margin-left: auto;
-    margin-right: auto;
-}
+        #menu a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            display: block;
+        }
 
-/* Media query para pantallas pequeñas (móviles) */
-@media (max-width: 767px) {
-    .product {
+        #menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Estilos para el botón hamburguesa */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        /* Mostrar menú hamburguesa en pantallas pequeñas */
+        @media (max-width: 768px) {
+            #menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            #menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            .product {
         width: calc(100% / 2 - 20px); /* En pantallas pequeñas, mostrar 2 productos por fila */
     }
 
-    #items-per-page {
-        width: 100%; /* Hacer que el selector de productos ocupe todo el ancho en pantallas pequeñas */
-    }
+        }
 
-    /* Estilos para el logo */
-    #logoportada {
-        width: 100%;
-        height: auto;
-    }
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
 
-    /* Hacer que el nav se apile en lugar de estar en una sola línea */
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-    }
+        .modal-content {
+            background-color: #333;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+        }
 
-    nav ul li {
-        margin: 10px 0;
-    }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-    /* Hacer que los botones de paginación sean más pequeños */
-    .pagination button {
-        padding: 8px;
-        font-size: 14px;
-    }
-}
-
-/* Media query para pantallas medianas (tabletas) */
-@media (max-width: 1024px) and (min-width: 768px) {
-    .product {
-        width: calc(100% / 3 - 20px); /* En tabletas, mostrar 3 productos por fila */
-    }
-}
-
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/industriaelmana" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/elmanaoficial" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@elmanaoficial" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
     <header>
-        <img id="logoportada" src="img/logo.jpg" alt="">
+        <img id="logoportada" src="img/logo.jpg" alt="Logo El Mana">
     </header>
 
     <nav>
-        <ul>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul id="menu">
             <li><a href="panes.html">Panes</a></li>
             <li><a href="#Restaurante">Restaurante</a></li>
             <li><a href="#Bizcochería">Bizcochería</a></li>
@@ -129,11 +212,10 @@
         <section id="panes">
             <h2>Panes</h2>
             <!-- Selector de productos por página -->
-            <label for="items-per-page">Productos por página:</label>
             <select id="items-per-page" onchange="loadProducts()">
-                <option value="12">12</option>
-                <option value="24">22</option>
-                <option value="60">60</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
             </select>
 
             <div class="products" id="product-container">
@@ -305,6 +387,10 @@
             if (event.target == document.getElementById("modal")) {
                 document.getElementById("modal").style.display = "none";
             }
+        };
+               // Función para alternar el menú hamburguesa
+               document.getElementById("hamburger").onclick = function () {
+            document.getElementById("menu").classList.toggle("active");
         };
 
         loadProducts();

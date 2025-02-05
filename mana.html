@@ -1,91 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panadería Delicia Dorada</title>
- 
-<!-- Enlaza Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-<!-- Enlaza Material Icons -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Panes - El Mana</title>
+    <link rel="shortcut icon" href="img/logo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            background-color: #ffd700;
-            padding: 0.5rem;
-        }
-        nav ul {
-            list-style-type: none;
+        /* Estilos básicos para la paginación */
+        .pagination {
             display: flex;
             justify-content: center;
+            margin-top: 20px;
         }
-        nav ul li {
-            margin: 0 1rem;
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
         }
-        nav ul li a {
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
+
+        .pagination button:hover {
+            background-color: #0056b3;
         }
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .category {
-            margin-bottom: 2rem;
-        }
-        .category h2 {
-            color: #000;
-            border-bottom: 2px solid #ffd700;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-        }
+
+        /* Estilos básicos para los productos */
         .product {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 1rem;
+            display: inline-block;
+            width: calc(100% / 6 - 20px);
+            margin: 10px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
         }
-        .product:hover {
-            transform: translateY(-5px);
-        }
+
         .product img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            margin-bottom: 0.5rem;
+            border-radius: 5px;
         }
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+
+        /* Contenedor de productos */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
+
+        /* Estilo de selección de productos por página */
+        #items-per-page {
+            margin-top: 20px;
+            display: block;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Estilos para el logo */
+        #logoportada {
+            max-width: 200px; /* Tamaño fijo para el logo */
+            height: auto;
+        }
+
+        /* Estilos para el nav (Menú hamburguesa) */
+        nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffd700;
+    z-index: 1000; /* Asegúrate de que el menú esté por encima de otros elementos */
+    box-shadow: 0 4px 2px -2px gray; /* Añade una sombra para separar visualmente el menú */
+}
+        #menu {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #menu li {
+            list-style: none;
+        }
+
+        #menu a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        #menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Estilos para el botón hamburguesa */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        /* Mostrar menú hamburguesa en pantallas pequeñas */
+        @media (max-width: 768px) {
+            #menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            #menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            .product {
+        width: calc(100% / 2 - 20px); /* En pantallas pequeñas, mostrar 2 productos por fila */
+    }
+
+        }
+
+        /* Estilos para el modal */
         .modal {
             display: none;
             position: fixed;
@@ -95,191 +149,247 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
         }
+
         .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
+            background-color: #333;
+            margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 600px;
+            border-radius: 10px;
         }
+
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
+
         .close:hover,
         .close:focus {
-            color: #000;
+            color: black;
             text-decoration: none;
             cursor: pointer;
         }
-        
-        #logoportada{
-            width: 50vw;
-            border-radius: 50%;
-            margin: 0 auto;
-            display: block;
-        }
-        .redessociales{
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin: 0 5px;
-        }
-        #gruporedes{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background-color: #000000;
-        }
     </style>
 </head>
+
 <body>
-    <div >
-	
-        <div id="gruporedes">
-            hola
-
-                                <a rel="" href="https://www.facebook.com/industriaelmana" target="_blank" img="icon/facebook.png" aria-label="Enlace social Facebook">
-                    <span class="wd-icon">
-                        <img class="redessociales" src="icon/facebook.png" alt="">
-                    </span>
-                                        </a>
-            
-            
-            
-                                <a rel="" href="https://www.instagram.com/elmanaoficial/?utm_source=ig_web_button_share_sheet&amp;igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class=" wd-social-icon social-instagram" aria-label="Enlace social Instagram">
-                    <span class="wd-icon"></span>
-                                        </a>
-            
-            
-                            
-                                <a rel="noopener noreferrer nofollow" href="https://www.tiktok.com/@elmanaoficial?_t=8hq2hndVqTO&amp;_r=1" target="_blank" class=" wd-social-icon social-tiktok" aria-label="Enlace social TikTok">
-                    <span class="wd-icon"></span>
-                                        </a>
-            
-            
-                            
-            
-        </div>
-
-    </div>
     <header>
-        <img id=logoportada src="img/logo.jpg" alt="">
-       
+        <img id="logoportada" src="img/logo.jpg" alt="Logo El Mana">
     </header>
+
     <nav>
-        <ul>
-            <li><a href="#panes">Panes</a></li>
-            <li><a href="#pasteles">Pasteles</a></li>
-            <li><a href="#galletas">Galletas</a></li>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul id="menu">
+            <li><a href="panes.html">Panes</a></li>
+            <li><a href="#Restaurante">Restaurante</a></li>
+            <li><a href="#Bizcochería">Bizcochería</a></li>
+            <li><a href="#Cafetería">Cafetería</a></li>
             <li><a href="#contacto">Contacto</a></li>
+            <div id="search-container">
+                <input type="text" id="search-input" placeholder="Buscar productos..." />
+                <button id="search-button" onclick="searchProduct()">Buscar</button>
+            </div>
         </ul>
     </nav>
+
     <main>
-        <section id="panes" class="category">
+        <section id="panes">
             <h2>Panes</h2>
-            <div class="products">
-                <div class="product" data-name="Pan Francés" data-description="Crujiente por fuera, suave por dentro. Perfecto para cualquier comida.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Pan Francés">
-                    <h3>Pan Francés</h3>
-                </div>
-                <div class="product" data-name="Pan de Centeno" data-description="Rico en fibra y sabor. Ideal para sándwiches y tostadas.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Pan de Centeno">
-                    <h3>Pan de Centeno</h3>
-                </div>
-                <div class="product" data-name="Pan Integral" data-description="Lleno de granos y semillas. Una opción saludable y deliciosa.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Pan Integral">
-                    <h3>Pan Integral</h3>
-                </div>
+            <!-- Selector de productos por página -->
+            <select id="items-per-page" onchange="loadProducts()">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+
+            <div class="products" id="product-container">
+                <!-- Los productos se agregarán aquí mediante JavaScript -->
             </div>
-        </section>
-        <section id="pasteles" class="category">
-            <h2>Pasteles</h2>
-            <div class="products">
-                <div class="product" data-name="Tarta de Manzana" data-description="Hecha con manzanas frescas y una pizca de canela. Un clásico reconfortante.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Tarta de Manzana">
-                    <h3>Tarta de Manzana</h3>
-                </div>
-                <div class="product" data-name="Pastel de Chocolate" data-description="Rico y decadente. Para los verdaderos amantes del chocolate.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Pastel de Chocolate">
-                    <h3>Pastel de Chocolate</h3>
-                </div>
-                <div class="product" data-name="Cheesecake" data-description="Cremoso y suave, con una base de galleta crujiente. Un postre irresistible.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Cheesecake">
-                    <h3>Cheesecake</h3>
-                </div>
-            </div>
-        </section>
-        <section id="galletas" class="category">
-            <h2>Galletas</h2>
-            <div class="products">
-                <div class="product" data-name="Galletas de Chocolate" data-description="Suaves por dentro, crujientes por fuera. Con trozos de chocolate negro.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Galletas de Chocolate">
-                    <h3>Galletas de Chocolate</h3>
-                </div>
-                <div class="product" data-name="Galletas de Avena" data-description="Saludables y deliciosas. Perfectas para el desayuno o como snack.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Galletas de Avena">
-                    <h3>Galletas de Avena</h3>
-                </div>
-                <div class="product" data-name="Galletas de Mantequilla" data-description="Clásicas y delicadas. Ideales para acompañar el té o el café.">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Galletas de Mantequilla">
-                    <h3>Galletas de Mantequilla</h3>
-                </div>
+
+            <!-- Paginación -->
+            <div class="pagination" id="pagination-container">
+                <!-- Los botones de paginación se agregarán aquí mediante JavaScript -->
             </div>
         </section>
     </main>
+
     <footer id="contacto">
         <h2>Contacto</h2>
-        <p>Dirección: Calle del Pan 123, Ciudad Deliciosa</p>
-        <p>Teléfono: (123) 456-7890</p>
-        <p>Email: info@panaderiadeliciadorada.com</p>
+        <p>Cra. 16 #37-42, Bucaramanga - Colombia</p>
+        <p>Teléfono: 6076425198</p>
+        <p>Email: contacto@elmana.co</p>
     </footer>
 
+    <!-- Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-description"></p>
+            <div>
+                <h2 id="modal-title"></h2>
+                <img id="modal-image" src="" alt="Imagen del producto">
+            </div>
+            <div>
+                <p id="modal-description"></p>
+                <p id="modal-price"></p>
+                <p id="modal-reference"></p>
+                <a id="modal-whatsapp" href="" target="_blank">Escribir en WhatsApp</a>
+            </div>
         </div>
     </div>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("modal");
+        // Datos de ejemplo de productos (puedes cambiar esto por datos dinámicos o de una API)
+        const products = [];
+        for (let i = 1; i <= 50; i++) {
+            products.push({
+                name: "Pan " + i,
+                description: "Descripción del pan " + i,
+                price: "$" + (i * 0.5).toFixed(2),
+                reference: "PF-" + (i < 10 ? "0" + i : i),
+                image: "img/productos/cascarita.jpg",
+                whatsapp: `https://wa.me/573001234567?text=Hola,%20me%20interesa%20el%20producto%20${"Pan " + i}`
+            });
+        }
 
-        // Get the <span> element that closes the modal
+        // Variables de paginación
+        let currentPage = 1;
+        let itemsPerPage = 10;
+
+        // Función para cargar los productos
+        function loadProducts() {
+            itemsPerPage = parseInt(document.getElementById("items-per-page").value); // Actualizar la cantidad de productos por página
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const currentProducts = products.slice(startIndex, endIndex);
+
+            // Limpiar el contenedor de productos
+            const productContainer = document.getElementById("product-container");
+            productContainer.innerHTML = '';
+
+            // Mostrar los productos
+            currentProducts.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'product';
+                productElement.setAttribute('data-name', product.name);
+                productElement.setAttribute('data-description', product.description);
+                productElement.setAttribute('data-price', product.price);
+                productElement.setAttribute('data-reference', product.reference);
+                productElement.setAttribute('data-whatsapp', product.whatsapp);
+
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p>${product.price}</p>
+                `;
+                productElement.onclick = function () {
+                    openModal(this);
+                };
+
+                productContainer.appendChild(productElement);
+            });
+
+            // Actualizar la paginación
+            updatePagination();
+        }
+
+        // Función para actualizar la paginación
+        function updatePagination() {
+            const paginationContainer = document.getElementById("pagination-container");
+            paginationContainer.innerHTML = '';
+
+            const totalPages = Math.ceil(products.length / itemsPerPage);
+
+            // Botón de "Página anterior"
+            const prevButton = document.createElement('button');
+            prevButton.innerText = 'Anterior';
+            prevButton.disabled = currentPage === 1;
+            prevButton.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    loadProducts();
+                }
+            };
+            paginationContainer.appendChild(prevButton);
+
+            // Botones de páginas
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.innerText = i;
+                pageButton.className = i === currentPage ? 'active' : '';
+                pageButton.onclick = () => {
+                    currentPage = i;
+                    loadProducts();
+                };
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Botón de "Página siguiente"
+            const nextButton = document.createElement('button');
+            nextButton.innerText = 'Siguiente';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    loadProducts();
+                }
+            };
+            paginationContainer.appendChild(nextButton);
+        }
+
+        // Función para abrir el modal con la información del producto
+        function openModal(productElement) {
+            // Obtener los datos del producto
+            const productName = productElement.getAttribute('data-name');
+            const productDescription = productElement.getAttribute('data-description');
+            const productPrice = productElement.getAttribute('data-price');
+            const productReference = productElement.getAttribute('data-reference');
+            const productWhatsapp = productElement.getAttribute('data-whatsapp');
+            const productImage = productElement.querySelector("img").src;
+
+            // Mostrar el modal
+            const modal = document.getElementById("modal");
+            modal.style.display = "block";
+
+            // Actualizar el contenido del modal
+            document.getElementById("modal-title").innerText = productName;
+            document.getElementById("modal-description").innerText = productDescription;
+            document.getElementById("modal-price").innerText = "Precio: " + productPrice;
+            document.getElementById("modal-reference").innerText = "Referencia: " + productReference;
+            document.getElementById("modal-image").src = productImage;
+            document.getElementById("modal-whatsapp").href = productWhatsapp;
+        }
+
+        // Función para cerrar el modal
         var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+            document.getElementById("modal").style.display = "none";
+        };
 
-        // Get all products
-        var products = document.getElementsByClassName("product");
-
-        // When the user clicks on a product, open the modal
-        for (var i = 0; i < products.length; i++) {
-            products[i].onclick = function() {
-                modal.style.display = "block";
-                document.getElementById("modal-title").innerText = this.getAttribute("data-name");
-                document.getElementById("modal-description").innerText = this.getAttribute("data-description");
+        // Cuando el usuario haga clic fuera del modal, cerrarlo
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("modal")) {
+                document.getElementById("modal").style.display = "none";
             }
-        }
+        };
+               // Función para alternar el menú hamburguesa
+               document.getElementById("hamburger").onclick = function () {
+            document.getElementById("menu").classList.toggle("active");
+        };
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        loadProducts();
     </script>
 </body>
+
 </html>
