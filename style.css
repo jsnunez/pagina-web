@@ -64,6 +64,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
+    justify-items: center;
 }
 .product {
     background-color: #ffffff26;
@@ -234,3 +235,75 @@ margin-top: 5vh;
         font-size: 1em;  /* Ajusta el tamaño del texto para que sea más legible en móviles */
     }
 }
+        /* Estilos para el nav (Menú hamburguesa) */
+       /* Estilos para el nav (Menú hamburguesa) */
+       nav {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ffd700;
+        z-index: 1000; /* Asegúrate de que el menú esté por encima de otros elementos */
+        box-shadow: 0 4px 2px -2px gray; /* Añade una sombra para separar visualmente el menú */
+    }
+            #menu {
+                display: flex;
+                justify-content: space-around;
+            }
+    
+            #menu li {
+                list-style: none;
+            }
+    
+            #menu a {
+                text-decoration: none;
+                color: #333;
+                padding: 10px 15px;
+                display: block;
+            }
+    
+            #menu a:hover {
+                background-color: #f1f1f1;
+            }
+    
+            /* Estilos para el botón hamburguesa */
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 25px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+    
+            .hamburger div {
+                width: 30px;
+                height: 4px;
+                background-color: #333;
+                border-radius: 5px;
+            }
+    
+            /* Mostrar menú hamburguesa en pantallas pequeñas */
+            @media (max-width: 768px) {
+                #menu {
+                    display: none;
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-top: 20px;
+                }
+    
+                #menu.active {
+                    display: flex;
+                }
+    
+                .hamburger {
+                    display: flex;
+                }
+                .product {
+            width: calc(100% / 2 - 20px); /* En pantallas pequeñas, mostrar 2 productos por fila */
+        }
+    
+            }

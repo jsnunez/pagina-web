@@ -22,11 +22,16 @@
     </header>
 
     <nav>
-        <ul>
+        <button class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <ul id="menu">
             <li><a href="panes.html">Panes</a></li>
             <li><a href="#Restaurante">Restaurante</a></li>
-            <li><a href="#Bizcocheria">Bizcocheria</a></li>
-            <li><a href="#Cafeteria">Cafeteria</a></li>
+            <li><a href="#Bizcochería">Bizcochería</a></li>
+            <li><a href="#Cafetería">Cafetería</a></li>
             <li><a href="#contacto">Contacto</a></li>
             <div id="search-container">
                 <input type="text" id="search-input" placeholder="Buscar productos..." />
@@ -157,7 +162,10 @@
                 alert("Por favor, ingresa un término de búsqueda.");
             }
         }
-
+ // Función para alternar el menú hamburguesa
+ document.getElementById("hamburger").onclick = function () {
+            document.getElementById("menu").classList.toggle("active");
+        };
         // Detectar la tecla Enter en el campo de búsqueda
         document.getElementById("search-input").addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
