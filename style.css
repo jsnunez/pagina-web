@@ -125,13 +125,24 @@ footer {
     margin: 0 auto;
     display: block;
 }
-#presentacion{
-    margin-top: 2vh;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 2em;
+#presentacion {
+    position: relative;
+    width: 100%;  /* El contenedor ocupa el 100% del ancho disponible */
+    height: 70vh;  /* Se ajusta al 100% de la altura de la pantalla (viewport height) */
+    overflow: hidden;
+
 }
+
+#presentacion video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);  /* Centra el video horizontalmente */
+    height: 80%;  /* El video tendrá el 100% de la altura del contenedor */
+    width: auto;  /* El ancho se ajusta automáticamente para mantener la proporción */
+    object-fit: cover; /* Asegura que el video cubra todo el contenedor sin distorsión */
+}
+
 #informacion{
     margin-top: 4vh;
     display: flex;
