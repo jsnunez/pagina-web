@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Búsqueda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Resultados de la Búsqueda</h1>
+        <a href="index.html">Volver al inicio</a>
+    </header>
+
+    <div id="search-results-container">
+        <!-- Los resultados de búsqueda se mostrarán aquí -->
+    </div>
+
+    <script>
+        // Obtener el parámetro "query" de la URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query'); // Obtener el término de búsqueda
+
+        // Mostrar los resultados de la búsqueda
+        document.getElementById("search-results-container").innerHTML = "<h2>Resultados para: " + query + "</h2>";
+
+        // Aquí deberías incluir la lógica para mostrar los productos que coincidan con el término de búsqueda.
+        // Como ejemplo, puedes simplemente mostrar un mensaje.
+        // En un proyecto real, este paso debe ser realizado con datos de productos o una API que devuelva los resultados.
+
+        // Ejemplo:
+        var exampleProducts = [
+            { name: "Pan Francés", description: "Crujiente por fuera, suave por dentro." },
+            { name: "Cascarita", description: "Rico en fibra y sabor." },
+            { name: "Rollo", description: "Lleno de granos y semillas." }
+        ];
+
+        var resultsContainer = document.getElementById("search-results-container");
+
+        // Filtrar los productos que contienen el término de búsqueda
+        var filteredProducts = exampleProducts.filter(function(product) {
+            return product.name.toLowerCase().includes(query.toLowerCase());
+        });
+
+        // Si se encuentran productos que coinciden, mostrarlos
+        if (filteredProducts.length > 0) {
+            filteredProducts.forEach(function(product) {
+                var productElement = document.createElement("div");
+                productElement.classList.add("product");
+                productElement.innerHTML = "<h3>" + product.name + "</h3><p>" + product.description + "</p>";
+                resultsContainer.appendChild(productElement);
+            });
+        } else {
+            resultsContainer.innerHTML += "<p>No se encontraron resultados.</p>";
+        }
+    </script>
+</body>
+</html>
