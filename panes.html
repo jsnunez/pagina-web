@@ -20,13 +20,14 @@
             margin: 0 5px;
             padding: 10px;
             border: none;
-            background-color: #007bff;
-            color: white;
+            background-color: #ffd700;
+            color: black ;
             cursor: pointer;
+            border-radius: 10px;
         }
 
         .pagination button:hover {
-            background-color: #0056b3;
+            background-color: #9f9662;
         }
 
         /* Estilos básicos para los productos */
@@ -254,33 +255,25 @@
     </div>
 
     <script>
-        // Datos de ejemplo de productos (puedes cambiar esto por datos dinámicos o de una API)
-        const products = [];
-        for (let i = 1; i <= 50; i++) {
-            products.push({
-                name: "Pan " + i,
-                description: "Descripción del pan " + i,
-                price: "$" + (i * 0.5).toFixed(2),
-                reference: "PF-" + (i < 10 ? "0" + i : i),
-                image: "img/productos/cascarita.jpg",
-                whatsapp: `https://wa.me/573001234567?text=Hola,%20me%20interesa%20el%20producto%20${"Pan " + i}`
-            });
-        }
-
-        // Variables de paginación
-        let currentPage = 1;
-        let itemsPerPage = 10;
-
-        // Función para cargar los productos
-        function loadProducts() {
+        let products = [];  // Array para almacenar los productos cargados desde el JSON
+        let currentPage = 1;  // Inicializamos currentPage a 1
+    
+        // Cargar los productos desde el archivo JSON
+        async function loadProducts() {
             itemsPerPage = parseInt(document.getElementById("items-per-page").value); // Actualizar la cantidad de productos por página
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
+
+            // Hacer una solicitud fetch para obtener el JSON
+            const response = await fetch('products.json');  // Asegúrate de que el archivo JSON esté en el mismo directorio o cambia la ruta
+            products = await response.json();  // Guardamos los productos en la variable global "products"
+
+            // Obtener los productos para la página actual
             const currentProducts = products.slice(startIndex, endIndex);
 
             // Limpiar el contenedor de productos
             const productContainer = document.getElementById("product-container");
-            productContainer.innerHTML = '';
+            productContainer.innerHTML = '';  // Limpiar el contenedor antes de agregar nuevos productos
 
             // Mostrar los productos
             currentProducts.forEach(product => {
@@ -295,9 +288,11 @@
                 productElement.innerHTML = `
                     <img src="${product.image}" alt="${product.name}">
                     <h3>${product.name}</h3>
-                    <p>${product.description}</p>
+                  
                     <p>${product.price}</p>
                 `;
+
+                // Mostrar el modal al hacer clic en el producto
                 productElement.onclick = function () {
                     openModal(this);
                 };
@@ -312,7 +307,7 @@
         // Función para actualizar la paginación
         function updatePagination() {
             const paginationContainer = document.getElementById("pagination-container");
-            paginationContainer.innerHTML = '';
+            paginationContainer.innerHTML = '';  // Limpiar los botones de paginación
 
             const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -355,7 +350,6 @@
 
         // Función para abrir el modal con la información del producto
         function openModal(productElement) {
-            // Obtener los datos del producto
             const productName = productElement.getAttribute('data-name');
             const productDescription = productElement.getAttribute('data-description');
             const productPrice = productElement.getAttribute('data-price');
@@ -388,12 +382,11 @@
                 document.getElementById("modal").style.display = "none";
             }
         };
-               // Función para alternar el menú hamburguesa
-               document.getElementById("hamburger").onclick = function () {
-            document.getElementById("menu").classList.toggle("active");
-        };
 
-        loadProducts();
+        // Cargar los productos cuando la página esté lista
+        window.onload = function () {
+            loadProducts();
+        };
     </script>
 </body>
 
