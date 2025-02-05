@@ -159,11 +159,36 @@ margin-top: 5vh;
     font-size: 1em;
 }
 .datosInformacion{
+
+    margin-left: 2vw;
+    margin-right: 2vw;
+    font-size: 0.8em;
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px
+}
+
+.datosInformacion div{
     margin-top: 2vh;
     margin-left: 2vw;
     margin-right: 2vw;
     margin-bottom: 2vh;
     font-size: 0.8em;
     display: flex;
+    align-items: center;
     
+}
+.datosInformacion div{
+    margin-top: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 2vh;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    
+}
+.datosInformacion i{
+    font-size: 5em;
+
 }
