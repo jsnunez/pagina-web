@@ -143,26 +143,27 @@ margin-top: 5vh;
     width: auto;  /* El ancho se ajusta automáticamente para mantener la proporción */
     object-fit: cover; /* Asegura que el video cubra todo el contenedor sin distorsión */
 }
-
-
-#informacion{
+#informacion {
     margin-top: -2vh;
     display: flex;
     justify-content: center;
     text-align: justify;
     font-size: 1em;
+    flex-wrap: wrap;  /* Permite que los elementos se ajusten automáticamente en pantallas pequeñas */
 }
-.datosInformacion{
 
+.datosInformacion {
     margin-left: 2vw;
     margin-right: 2vw;
     font-size: 0.8em;
     display: flex;
     border: 1px solid #ddd;
-    border-radius: 10px
+    border-radius: 10px;
+    width: 45%;  /* Establece un ancho para las pantallas grandes */
+    margin-bottom: 2vh;  /* Para separar los bloques */
 }
 
-.datosInformacion div{
+.datosInformacion div {
     margin-top: 2vh;
     margin-left: 2vw;
     margin-right: 2vw;
@@ -170,19 +171,36 @@ margin-top: 5vh;
     font-size: 0.8em;
     display: flex;
     align-items: center;
-    
 }
-.datosInformacion div{
-    margin-top: 2vh;
-    margin-left: 2vw;
-    margin-right: 2vw;
-    margin-bottom: 2vh;
-    font-size: 0.8em;
-    display: flex;
-    align-items: center;
-    
-}
-.datosInformacion i{
-    font-size: 5em;
 
+.datosInformacion i {
+    font-size: 3em;  /* Reduces el tamaño del icono en pantallas pequeñas */
+    margin-right: 10px;  /* Para un poco de separación entre el ícono y el texto */
+}
+
+@media (max-width: 768px) {  /* Para pantallas más pequeñas que 768px (tabletas y celulares) */
+    #informacion {
+        flex-direction: column;  /* Cambia la disposición a columna */
+        margin-top: 0;  /* Ajusta el margen superior */
+        text-align: center;  /* Centra el texto */
+    }
+
+    .datosInformacion {
+        width: 90%;  /* Amplía el ancho del bloque para ajustarse mejor a pantallas pequeñas */
+        margin-left: 5%;  /* Para tener un poco de margen a los lados */
+        margin-right: 5%;  /* Igual que el margen izquierdo */
+    }
+
+    .datosInformacion i {
+        font-size: 4em;  /* El tamaño del icono puede ser más grande en dispositivos pequeños */
+    }
+
+    .datosInformacion div {
+        margin-left: 0;  /* Elimina márgenes laterales */
+        margin-right: 0;  /* Elimina márgenes laterales */
+    }
+
+    h3 {
+        font-size: 1em;  /* Ajusta el tamaño del texto para que sea más legible en móviles */
+    }
 }
