@@ -19,9 +19,7 @@
 
     </div>
 
-    <header>
-        <img id="logoportada" src="img/logo.jpg" alt="">
-    </header>
+
 
     <nav>
         <button class="hamburger" id="hamburger">
@@ -30,16 +28,24 @@
             <div></div>
         </button>
         <ul id="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="panes.html">Panaderia</a></li>
-            <li><a href="#Restaurante">Restaurante</a></li>
-            <li><a href="#Bizcochería">Bizcochería</a></li>
-            <li><a href="#Cafetería">Cafetería</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <div id="search-container">
+            <li><img id="logoportada" src="img/logo.jpg" alt=""> </li>
+            <li><a href="panes.html">
+                    <h2>Menú</h2>
+                </a></li>
+            <li><a href="panes.html">
+                    <h2>Pedidos</h2>
+                </a></li>
+
+            <li><a href="#Restaurante">
+                    <h2>Nuestra Sedes</h2>
+                </a></li>
+            <li><a href="#contacto">
+                    <h2>Contacto</h2>
+                </a></li>
+            <!-- <div id="search-container">
                 <input type="text" id="search-input" placeholder="Buscar productos..." />
                 <button id="search-button" onclick="searchProduct()">Buscar</button>
-            </div>
+            </div> -->
         </ul>
     </nav>
 
@@ -66,25 +72,63 @@
 
     <main>
         <section id="MasVendidos" class="category">
-            <h2>Mas Vendidos</h2>
-            <div class="products">
-                <div class="product" data-name="Pan Francés"
+            <h2>Nuestros Productos</h2>
+            <div class="todosProductos">
+                <a href="panes.html">
+                <div class="product" data-name="Pan Especial"
                     data-description="Crujiente por fuera, suave por dentro. Perfecto para cualquier comida."
                     data-price="$2.50" data-reference="PF-01" data-whatsapp="https://wa.me/123456789">
-                    <img src="img/productos/cascarita.jpg" alt="Pan Francés">
-                    <h3>Pan Francés</h3>
-                </div>
-                <div class="product" data-name="Cascarita"
+                    <img src="img/productos/arandanos.png" alt="Pan Francés">
+                    <h3>Pan Especial</h3>
+               
+                </a> </div>
+                <div class="product" data-name="Pan Dulce"
                     data-description="Rico en fibra y sabor. Ideal para sándwiches y tostadas." data-price="$1.80"
                     data-reference="CS-01" data-whatsapp="https://wa.me/123456789">
-                    <img src="img/productos/cascarita.jpg" alt="Cascarita">
-                    <h3>Cascarita</h3>
+                    <img src="img/productos/suspiro.jpg" alt="Cascarita">
+                    <h3>Pan Dulce</h3>
+                </div>
+                <div class="product" data-name="Frances"
+                    data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
+                    data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
+                    <img src="img/productos/cascarita.jpg" alt="Rollo">
+                    <h3>Frances</h3>
+                </div>
+                <div class="product" data-name="Rollo"
+                    data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
+                    data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
+                    <img src="img/productos/alfajor.png" alt="Rollo">
+                    <h3>Bizcocheria</h3>
+                </div>
+                <div class="product" data-name="Rollo"
+                    data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
+                    data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
+                    <img src="img/productos/ajo.jpg" alt="Rollo">
+                    <h3>Tradicional</h3>
+                </div>
+                <div class="product" data-name="Rollo"
+                    data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
+                    data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
+                    <img src="img/productos/integralAvena.jpg" alt="Rollo">
+                    <h3>Saludables</h3>
                 </div>
                 <div class="product" data-name="Rollo"
                     data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
                     data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
                     <img src="img/productos/cascarita.jpg" alt="Rollo">
-                    <h3>Rollo</h3>
+                    <h3>Otros</h3>
+                </div>
+                <div class="product" data-name="Rollo"
+                    data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
+                    data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
+                    <img src="img/productos/Cabecera.jpg" alt="Rollo">
+                    <h3>Restaurante</h3>
+                </div>
+                <div class="product" data-name="Rollo"
+                    data-description="Lleno de granos y semillas. Una opción saludable y deliciosa." data-price="$2.20"
+                    data-reference="RL-01" data-whatsapp="https://wa.me/123456789">
+                    <img src="img/productos/Majoras-publicas.jpg" alt="Rollo">
+                    <h3>Cafeteria</h3>
                 </div>
             </div>
         </section>
@@ -100,6 +144,7 @@
     </footer>
 
     <!-- Modal -->
+    <!--      
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -115,7 +160,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
     <script>
         // Obtener el modal
@@ -165,8 +210,8 @@
                 alert("Por favor, ingresa un término de búsqueda.");
             }
         }
- // Función para alternar el menú hamburguesa
- document.getElementById("hamburger").onclick = function () {
+        // Función para alternar el menú hamburguesa
+        document.getElementById("hamburger").onclick = function () {
             document.getElementById("menu").classList.toggle("active");
         };
         // Detectar la tecla Enter en el campo de búsqueda

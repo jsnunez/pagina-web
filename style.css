@@ -62,14 +62,15 @@ main {
 }
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1rem;
     justify-items: center;
 }
+
 .product {
+    
     background-color: #ffffff26;
     border: 1px solid #ddd;
-    padding: 1rem;
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -202,7 +203,7 @@ margin-top: 5vh;
 }
 .product {
     display: inline-block;
-    width: calc(100% / 6 - 20px);
+    width: calc(100% / 4 - 30px);
     margin: 10px;
     text-align: center;
     cursor: pointer;
@@ -235,6 +236,9 @@ margin-top: 5vh;
         width: 90%;  /* Amplía el ancho del bloque para ajustarse mejor a pantallas pequeñas */
         margin-left: 5%;  /* Para tener un poco de margen a los lados */
         margin-right: 5%;  /* Igual que el margen izquierdo */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .datosInformacion i {
@@ -246,6 +250,13 @@ margin-top: 5vh;
     h3 {
         font-size: 1em;  /* Ajusta el tamaño del texto para que sea más legible en móviles */
     }
+    #logoportada{
+        height: 10vh;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: block;
+    }
+
 }
         /* Estilos para el nav (Menú hamburguesa) */
        /* Estilos para el nav (Menú hamburguesa) */
@@ -261,14 +272,13 @@ margin-top: 5vh;
             #menu {
                 display: flex;
                 justify-content: space-around;
-                
+                align-items: center;
             }
     
             #menu li {
                 list-style: none;
                 width: 100%;
-text-align: center;              
-border: 1px solid #6d6835;
+
 
             }
     #menu ul{
@@ -280,10 +290,12 @@ border: 1px solid #6d6835;
                 color: #333;
                 padding: 10px 15px;
                 display: block;
+                text-align: center;
             }
     
             #menu a:hover {
-                background-color: #ded727;
+                background-color: #f5f186;
+                border-radius: 10px;
             }
     
             /* Estilos para el botón hamburguesa */
@@ -304,6 +316,7 @@ border: 1px solid #6d6835;
                 background-color: #333;
                 border-radius: 5px;
             }
+        
     
             /* Mostrar menú hamburguesa en pantallas pequeñas */
             @media (max-width: 768px) {
@@ -313,6 +326,12 @@ border: 1px solid #6d6835;
                     flex-direction: column;
                     align-items: center;
                     margin-top: 20px;
+                }
+                #menu li {
+                    list-style: none;
+                    width: 100%;
+  
+    
                 }
     
                 #menu.active {
