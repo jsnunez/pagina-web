@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mana - Tradicion de hogar</title>
+    <link rel="shortcut icon" href="img/logo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+ 
+    </style>
+</head>
+<body>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/industriaelmana" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/elmanaoficial" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@elmanaoficial" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <header>
+        <img id=logoportada src="img/logo.jpg" alt="">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#panes">Panes</a></li>
+            <li><a href="#pasteles">Pasteles</a></li>
+            <li><a href="#galletas">Galletas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <div id="presentacion">
+        <video width="640" height="360" autoplay muted loop>
+            <source src="videos/portada.mp4"  >    
+              </video>
+      
+    </div>
+    <i class="fab fa-car-"></i>
+
+    <div id="informacion">
+        <div class="datosInformacion">
+            <i class="fa-solid fa-truck"></i>            <h3>Pide a DOMICILIO, si lo haces hoy antes de las 4:00 p.m. recibirás tu pedido al día siguiente
+            </h3>
+        </div>
+        <div class="datosInformacion">
+            <i class="fa-regular fa-calendar-days"></i>
+            <h3>            Los pedidos que hagas sábados, domingo o festivos serán entregados al día hábil siguiente
+            </h3>
+        </div>
+    </div>
+    <main>
+        <section id="panes" class="category">
+            <h2>Panes</h2>
+            <div class="products">
+                <div class="product" data-name="Pan Francés" data-description="Crujiente por fuera, suave por dentro. Perfecto para cualquier comida.">
+                    <img src="/img/productos/cascarita.jpg" alt="Pan Francés">
+                    <h3>Pan Francés</h3>
+                </div>
+                <div class="product" data-name="Pan de Centeno" data-description="Rico en fibra y sabor. Ideal para sándwiches y tostadas.">
+                    <img src="/img/productos/cascarita.jpg" alt="Pan de Centeno">
+                    <h3>Pan de Centeno</h3>
+                </div>
+                <div class="product" data-name="Pan Integral" data-description="Lleno de granos y semillas. Una opción saludable y deliciosa.">
+                    <img src="/img/productos/cascarita.jpg" alt="Pan Integral">
+                    <h3>Pan Integral</h3>
+                </div>
+            </div>
+        </section>
+       
+        <section id="pasteles" class="category">
+            <h2>Pasteles</h2>
+            <div class="products">
+                <div class="product" data-name="Tarta de Manzana" data-description="Hecha con manzanas frescas y una pizca de canela. Un clásico reconfortante.">
+                    <img src="/img/productos/cascarita.jpg" alt="Tarta de Manzana">
+                    <h3>Tarta de Manzana</h3>
+                </div>
+                <div class="product" data-name="Pastel de Chocolate" data-description="Rico y decadente. Para los verdaderos amantes del chocolate.">
+                    <img src="/img/productos/cascarita.jpg" alt="Pastel de Chocolate">
+                    <h3>Pastel de Chocolate</h3>
+                </div>
+                <div class="product" data-name="Cheesecake" data-description="Cremoso y suave, con una base de galleta crujiente. Un postre irresistible.">
+                    <img src="/img/productos/cascarita.jpg" alt="Cheesecake">
+                    <h3>Cheesecake</h3>
+                </div>
+            </div>
+        </section>
+        <section id="galletas" class="category">
+            <h2>Galletas</h2>
+            <div class="products">
+                <div class="product" data-name="Galletas de Chocolate" data-description="Suaves por dentro, crujientes por fuera. Con trozos de chocolate negro.">
+                    <img src="/img/productos/cascarita.jpg" alt="Galletas de Chocolate">
+                    <h3>Galletas de Chocolate</h3>
+                </div>
+                <div class="product" data-name="Galletas de Avena" data-description="Saludables y deliciosas. Perfectas para el desayuno o como snack.">
+                    <img src="/img/productos/cascarita.jpg" alt="Galletas de Avena">
+                    <h3>Galletas de Avena</h3>
+                </div>
+                <div class="product" data-name="Galletas de Mantequilla" data-description="Clásicas y delicadas. Ideales para acompañar el té o el café.">
+                    <img src="/img/productos/cascarita.jpg" alt="Galletas de Mantequilla">
+                    <h3>Galletas de Mantequilla</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="contacto">
+
+
+
+        <h2>Contacto</h2>
+        <p>Cra. 16 #37-42, Bucaramanga - Colombia</p>
+        <p>Teléfono: 6076425198</p>
+        <p>Email: contacto@elmana.co
+        </p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("modal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Get all products
+        var products = document.getElementsByClassName("product");
+
+        // When the user clicks on a product, open the modal
+        for (var i = 0; i < products.length; i++) {
+            products[i].onclick = function() {
+                modal.style.display = "block";
+                document.getElementById("modal-title").innerText = this.getAttribute("data-name");
+                document.getElementById("modal-description").innerText = this.getAttribute("data-description");
+            }
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

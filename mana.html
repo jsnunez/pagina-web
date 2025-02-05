@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería Delicia Dorada</title>
+ 
+<!-- Enlaza Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Enlaza Material Icons -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffd700;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .category {
+            margin-bottom: 2rem;
+        }
+        .category h2 {
+            color: #000;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        #logoportada{
+            width: 50vw;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+        .redessociales{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        #gruporedes{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div >
+	
+        <div id="gruporedes">
+            hola
+
+                                <a rel="" href="https://www.facebook.com/industriaelmana" target="_blank" img="icon/facebook.png" aria-label="Enlace social Facebook">
+                    <span class="wd-icon">
+                        <img class="redessociales" src="icon/facebook.png" alt="">
+                    </span>
+                                        </a>
+            
+            
+            
+                                <a rel="" href="https://www.instagram.com/elmanaoficial/?utm_source=ig_web_button_share_sheet&amp;igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class=" wd-social-icon social-instagram" aria-label="Enlace social Instagram">
+                    <span class="wd-icon"></span>
+                                        </a>
+            
+            
+                            
+                                <a rel="noopener noreferrer nofollow" href="https://www.tiktok.com/@elmanaoficial?_t=8hq2hndVqTO&amp;_r=1" target="_blank" class=" wd-social-icon social-tiktok" aria-label="Enlace social TikTok">
+                    <span class="wd-icon"></span>
+                                        </a>
+            
+            
+                            
+            
+        </div>
+
+    </div>
+    <header>
+        <img id=logoportada src="img/logo.jpg" alt="">
+       
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#panes">Panes</a></li>
+            <li><a href="#pasteles">Pasteles</a></li>
+            <li><a href="#galletas">Galletas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="panes" class="category">
+            <h2>Panes</h2>
+            <div class="products">
+                <div class="product" data-name="Pan Francés" data-description="Crujiente por fuera, suave por dentro. Perfecto para cualquier comida.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Pan Francés">
+                    <h3>Pan Francés</h3>
+                </div>
+                <div class="product" data-name="Pan de Centeno" data-description="Rico en fibra y sabor. Ideal para sándwiches y tostadas.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Pan de Centeno">
+                    <h3>Pan de Centeno</h3>
+                </div>
+                <div class="product" data-name="Pan Integral" data-description="Lleno de granos y semillas. Una opción saludable y deliciosa.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Pan Integral">
+                    <h3>Pan Integral</h3>
+                </div>
+            </div>
+        </section>
+        <section id="pasteles" class="category">
+            <h2>Pasteles</h2>
+            <div class="products">
+                <div class="product" data-name="Tarta de Manzana" data-description="Hecha con manzanas frescas y una pizca de canela. Un clásico reconfortante.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Tarta de Manzana">
+                    <h3>Tarta de Manzana</h3>
+                </div>
+                <div class="product" data-name="Pastel de Chocolate" data-description="Rico y decadente. Para los verdaderos amantes del chocolate.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Pastel de Chocolate">
+                    <h3>Pastel de Chocolate</h3>
+                </div>
+                <div class="product" data-name="Cheesecake" data-description="Cremoso y suave, con una base de galleta crujiente. Un postre irresistible.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Cheesecake">
+                    <h3>Cheesecake</h3>
+                </div>
+            </div>
+        </section>
+        <section id="galletas" class="category">
+            <h2>Galletas</h2>
+            <div class="products">
+                <div class="product" data-name="Galletas de Chocolate" data-description="Suaves por dentro, crujientes por fuera. Con trozos de chocolate negro.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Galletas de Chocolate">
+                    <h3>Galletas de Chocolate</h3>
+                </div>
+                <div class="product" data-name="Galletas de Avena" data-description="Saludables y deliciosas. Perfectas para el desayuno o como snack.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Galletas de Avena">
+                    <h3>Galletas de Avena</h3>
+                </div>
+                <div class="product" data-name="Galletas de Mantequilla" data-description="Clásicas y delicadas. Ideales para acompañar el té o el café.">
+                    <img src="/placeholder.svg?height=150&width=150" alt="Galletas de Mantequilla">
+                    <h3>Galletas de Mantequilla</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="contacto">
+        <h2>Contacto</h2>
+        <p>Dirección: Calle del Pan 123, Ciudad Deliciosa</p>
+        <p>Teléfono: (123) 456-7890</p>
+        <p>Email: info@panaderiadeliciadorada.com</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("modal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Get all products
+        var products = document.getElementsByClassName("product");
+
+        // When the user clicks on a product, open the modal
+        for (var i = 0; i < products.length; i++) {
+            products[i].onclick = function() {
+                modal.style.display = "block";
+                document.getElementById("modal-title").innerText = this.getAttribute("data-name");
+                document.getElementById("modal-description").innerText = this.getAttribute("data-description");
+            }
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
