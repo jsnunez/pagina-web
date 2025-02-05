@@ -261,12 +261,20 @@ margin-top: 5vh;
             #menu {
                 display: flex;
                 justify-content: space-around;
+                
             }
     
             #menu li {
                 list-style: none;
+                width: 100%;
+text-align: center;              
+border: 1px solid #6d6835;
+
             }
-    
+    #menu ul{
+        border: 10px solid #ddd;
+
+    }
             #menu a {
                 text-decoration: none;
                 color: #333;
@@ -275,7 +283,7 @@ margin-top: 5vh;
             }
     
             #menu a:hover {
-                background-color: #f1f1f1;
+                background-color: #ded727;
             }
     
             /* Estilos para el botón hamburguesa */
